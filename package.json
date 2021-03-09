@@ -1,0 +1,19 @@
+{
+  "name": "newsite",
+  "version": "1.0.0",
+  "description": "Criar o arquivo package npm init -y",
+  "main": "index.js",
+  "scripts": {
+    "dev":"nodemon src/server.js",
+    "build": "sucrase ./src -d ./outDir --transforms imports"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.17.1"
+  }
+}
