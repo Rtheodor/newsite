@@ -21,3 +21,8 @@ npm install --save mongodb
 
 //Instalar o Mongoose - Mongoose traduz os dados do banco de dados para objetos JavaScript para que possam ser utilizados por sua aplicação.
 npm install --save mongoose
+
+//Não esquecer de iniciar o MongoDB. Vá para a raiz onde foi instalado e ai no terminal digite:
+sudo service mongod start
+
+sudo systemctl status mongod
