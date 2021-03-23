@@ -26,3 +26,6 @@ npm install --save mongoose
 sudo service mongod start
 
 sudo systemctl status mongod
+
+//validar campo
+npm install --save yup
