@@ -12,8 +12,7 @@ class UserController {
             .required(),
             password: Yup.string()
             .required()
-            .min(6)
-            .max(6),
+            .min(6),
         })
         if(!(await schema.isValid(req.body))){
             return res.status(400).json({
