@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import bcrypt from 'bcryptjs'
 import User from '../models/User';
 
 class UserController {
@@ -32,6 +33,9 @@ class UserController {
             });
 
         } 
+
+        var dados = req.body;
+        dados.password = await bcrypt.hash(dados.password,6);
         
        
         const user = await User.create(req.body, (err) => {

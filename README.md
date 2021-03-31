@@ -29,3 +29,7 @@ sudo systemctl status mongod
 
 //validar campo
 npm install --save yup
+
+//Instalar o módulo para criptografar a senha
+
+npm install --save bcryptjs
