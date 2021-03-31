@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-
+import jwt from 'jsonwebtoken'
 import User from '../models/User'
 
 class LoginController{
@@ -30,7 +30,8 @@ class LoginController{
                 name: userExiste.name,
                 email
                 
-            }
+            },
+            token:jwt.sign({id:userExiste._id},'4BB8BC5DF95B6357CCC4C2EE18177BCC', {expiresIn:'1d'}),
             
         })
 
