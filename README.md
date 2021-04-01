@@ -31,5 +31,7 @@ sudo systemctl status mongod
 npm install --save yup
 
 //Instalar o módulo para criptografar a senha
-
 npm install --save bcryptjs
+
+// Intalar a dependencia para JWT
+npm install --save jsonwebtoken
