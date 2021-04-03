@@ -61,7 +61,8 @@ class UserController {
                 code: 121,
                 message: "Usuário não encontrado."
             })
-        }
+            }
+            
             const user = await User.deleteOne({ _id: req.params.id }, (err) => {
                 if (err) return res.status(400).json({
                     error: true,
