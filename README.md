@@ -35,3 +35,6 @@ npm install --save bcryptjs
 
 // Intalar a dependencia para JWT
 npm install --save jsonwebtoken
+
+//instalar o módulo para paginação com mongoose
+npm install --save mongoose-paginate-v2

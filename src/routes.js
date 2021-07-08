@@ -9,6 +9,7 @@ import LoginController from './app/controllers/LoginController';
 
 const routes = new Router();
 
+routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 routes.delete('/users/:id', UserController.delete);
 routes.post('/login', LoginController.store);

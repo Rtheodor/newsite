@@ -3,6 +3,23 @@ import bcrypt from 'bcryptjs';
 import User from '../models/User';
 
 class UserController {
+    async index(req,res){
+       const {page=1} = req.query;
+       const{limit=40} =req.query;
+            await User.paginate({},{select: '_id name email', page, limit}).then((users)=>{
+            return res.json({
+                error:  false,
+                users:  users
+            })
+        }).catch((erro)=>{
+            return res.status(400).json({
+                error: true,
+                code: 106,
+                message: "Erro: Não foi possivel executar a solicitação!"
+            })
+        })
+    }
+
     async store(req, res) {
 
         const schema = Yup.object().shape({
