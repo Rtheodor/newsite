@@ -36,7 +36,7 @@ class UserController {
     };
 
     async store(req, res) {
-
+        
         const schema = Yup.object().shape({
             name: Yup.string()
                 .required(),
@@ -46,15 +46,16 @@ class UserController {
             password: Yup.string()
                 .required()
                 .min(6)
-                .max(6),
-        })
+                .max(10),
+        });
+        
         if (!(await schema.isValid(req.body))) {
             return res.status(400).json({
                 error: true,
-                code: 102,
+                code: 103,
                 message: "Error: Dados invalidos!"
             });
-        }
+        };
 
         const emailExiste = await User.findOne({ email: req.body.email });
         if (emailExiste) {
@@ -151,7 +152,7 @@ class UserController {
 
     async delete(req, res) {
         const usuarioExiste = await User.findOne({ _id: req.params.id });
-
+       
         if (!usuarioExiste) {
             return res.status(400).json({
                 error: true,
