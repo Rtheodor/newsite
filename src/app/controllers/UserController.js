@@ -108,7 +108,7 @@ class UserController {
 
         const { _id, email } = req.body;
 
-        const usuarioExiste = await User.findOne({ _id });
+        const usuarioExiste = await User.findOne({ _id: _id});
 
         if (!usuarioExiste) {
             return res.status(400).json({

@@ -16,6 +16,7 @@ routes.put('/users/', authMiddleware, UserController.update);
 routes.delete('/users/:id', authMiddleware, UserController.delete);
 
 routes.get('/perfil', authMiddleware, PerfilController.show);
+routes.put('/perfil', authMiddleware, PerfilController.update);
 
 routes.post('/login', LoginController.store);
 

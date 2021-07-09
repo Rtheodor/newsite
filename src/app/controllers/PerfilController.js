@@ -20,5 +20,65 @@ class PerfilController{
             });
         });
     };
+    async update(req, res) {
+        const schema = Yup.object().shape({
+            name: Yup.string(),
+            email: Yup.string()
+                .email(),
+            password: Yup.string()
+                .min(6)
+
+        });
+
+        if (!(await schema.isValid(req.body))) {
+            return res.status(400).json({
+                error: true,
+                code: 108,
+                message: "Dados do formulário errado!"
+            });
+        };
+
+        const { email } = req.body;
+
+        const usuarioExiste = await User.findOne({ _id: req.userId});
+
+        if (!usuarioExiste) {
+            return res.status(400).json({
+                error: true,
+                code: 109,
+                message: "Erro: Usuário nao encontrado!"
+            });
+        };
+
+        if (email != usuarioExiste.email){
+            const emailExiste = await User.findOne({email});
+            if(emailExiste){
+                return res.status(400).json({
+                error:true,
+                code:110,
+                message: "Erro: este email já esta cadastrado!"
+            });
+            };
+        };
+
+        var dados= req.body;
+        if(dados.password){
+            dados.password = await bcrypt.hash(dados.password, 8);
+        };
+
+        await User.updateOne({_id: req.userId}, dados, (err)=>{
+            if (err) return res.status(400).json({
+                error:true,
+                code:111,
+                message:"Erro: Usuário não foi editado!"
+            });
+            return res.json({
+                error: false,
+                message: "Usuário editado com sucesso!"
+            });
+        });
+
+        
+    };
 };
 export default new PerfilController();
