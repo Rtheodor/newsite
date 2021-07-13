@@ -9,7 +9,7 @@ class LoginController{
         const userExiste = await  User.findOne({email:email});
         
         if(!userExiste){
-            return res.status(401).json({
+            return res.json({
                 error:true,
                 code: 110,
                 message: "Erro: Usuário não encontrado!"
@@ -17,7 +17,7 @@ class LoginController{
         }
 
         if (! (await bcrypt.compare(password, userExiste.password))){
-            return res.status(401).json({
+            return res.json({
                 error:true,
                 code:111,
                 message:"Erro:Senha incorreta!"
