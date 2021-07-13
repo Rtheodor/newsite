@@ -4,6 +4,13 @@ import fs from 'fs';
 class PerfilImagemController{
     async update (req, res){
         
+        if(!req.file){
+            return res.status(400).json({
+                erro:true,
+                code:1029,
+                messagem: "Erro: selecione uma imagem JPEG ou PNG"
+            });
+        };
         const dadosImagem = {
             originalName: req.file.originalname,
             fileName: req.file.filename
@@ -25,7 +32,7 @@ class PerfilImagemController{
             if(err) return res.status(400).json({
                 error:true,
                 code: 129,
-                messagem: "Erro: Imagem do perfil não editado com sucesso!" 
+                messagem: "Erro: Imagem do perfil não foi editado com sucesso!" 
             });
         });
         

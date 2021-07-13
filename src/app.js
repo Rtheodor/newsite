@@ -3,6 +3,7 @@
 
 import express from 'express';
 import routes from './routes';
+import path from 'path';
 
 import './config/conexao';
 
@@ -15,6 +16,9 @@ class App{
     }
     middlewares(){
         this.app.use(express.json());
+        this.app.use('/files',
+        express.static(path.resolve(__dirname, "..", "tmp", "upload"))
+        );
     }
     routes(){
         this.app.use(routes);
