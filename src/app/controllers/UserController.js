@@ -21,7 +21,7 @@ class UserController {
     }
 
     async show(req, res) {
-        User.findOne({ _id: req.params.id }, '_id name email createdAt updatedAt').then((user) => {
+        User.findOne({ _id: req.params.id }, '_id name email createdAt updatedAt originalName fileName').then((user) => {
             return res.json({
                 error: false,
                 user: user
@@ -142,7 +142,7 @@ class UserController {
             });
             return res.json({
                 error: false,
-                message: "Usuário editado com sucesso!"
+                message: "Imagem do perfil editado com sucesso!"
             });
         });
 
