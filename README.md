@@ -5,7 +5,7 @@ npm init -y
 npm install express
 
 //Instalar o módulo para reiniciar o servidor sempre que houver alteração no código fonte
-npm install -D nodemon
+npm install -D nodemon (Caso de o comando nodemon src/server.js e aparecer o erro: "nodemon: command not found" vá para o terminal e instale o nodemon de forma global) sudo npm install nodemon -g
 
 //Produz código JS válido - para import do ES6
 npm install -D sucrase
@@ -45,3 +45,8 @@ npm install --save multer (meu)
 //permitir acesso a API
 npm Install --save cors
 
+//Criar o Dump
+mongodump --db NOME-DO-BANCO --out /home/%USUARIO%/%DIR_DE_BACKUP
+
+//Restaurar o Backup
+mongorestore --db NOME-DO-BANCO /home/%USUARIO%/%DIR_DE_BACKUP/NOME-DO-BANCO
